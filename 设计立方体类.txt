@@ -1,0 +1,207 @@
+练习案列１：设计立方体类
+要求１：求出立方体的面积和体积　要求２：分别用全局变量和成员函数判断两个立方体是否相等。
+#include<iostream>
+using namespace std;
+class Cube
+{
+public:
+    ／／设置长
+	void SetL(int l)
+	{
+		L = l;
+	}
+ ／／获取长
+	int GetL()
+	{
+		return L; 
+	}
+ ／／设置宽
+	void SetW(int w)
+	{
+		W = w;
+	}
+ ／／获取宽
+	int GetW()
+	{
+		return W; 
+	}
+ ／／设置高
+	void SetH(int h)
+	{
+		H = h;
+	}
+ ／／获取高
+	int GetH()
+	{
+		return H; 
+	}
+ ／／获取周长
+	int GetC()
+	{
+		return 2*L*H+2*L*W+2*H*W;
+	}
+ ／／获取体积
+	int GetV()
+	{
+		return L*H*W;
+	}
+private:
+    int L;
+	int W;
+	int H;	
+};
+int main()
+{
+	Cube c;
+	c.SetH(10);
+	c.SetL(10);
+	c.SetW(10);
+	cout << "面积为： " << c.GetC() << endl;
+	cout << "体积为： " << c.GetV() << endl; 
+}
+
+
+#include<iostream>
+using namespace std;
+class Cube
+{
+public:
+	void SetL(int l)
+	{
+		L = l;
+	}
+	int GetL()
+	{
+		return L; 
+	}
+	void SetW(int w)
+	{
+		W = w;
+	}
+	int GetW()
+	{
+		return W; 
+	}
+	void SetH(int h)
+	{
+		H = h;
+	}
+	int GetH()
+	{
+		return H; 
+	}
+	int GetC()
+	{
+		return 2*L*H+2*L*W+2*H*W;
+	}
+	int GetV()
+	{
+		return L*H*W;
+	} 
+private:
+    int L;
+	int W;
+	int H;	
+};
+//利用全局函数判断两个正方体是否相等
+bool isSame(Cube &c1, Cube &c2)
+{
+    if(c1.GetC() == c2.GetC() && c1.GetH() == c2.GetH() && c1.GetW() == c2.GetW() )
+	{
+        return true;		
+	}	
+	return false;
+} 
+int main()
+{
+	Cube c1;
+	c1.SetH(10);
+	c1.SetL(10);
+	c1.SetW(10);
+	Cube c2;
+	c2.SetH(10);
+	c2.SetL(10);
+	c2.SetW(10);
+	bool ret = isSame(c1, c2); 
+	if(ret)
+	{
+		cout << "相等" << endl;
+	}
+	else
+	{
+		cout << "不相等" << endl;
+	}
+}
+
+
+#include<iostream>
+using namespace std;
+class Cube
+{
+public:
+	void SetL(int l)
+	{
+		L = l;
+	}
+	int GetL()
+	{
+		return L; 
+	}
+	void SetW(int w)
+	{
+		W = w;
+	}
+	int GetW()
+	{
+		return W; 
+	}
+	void SetH(int h)
+	{
+		H = h;
+	}
+	int GetH()
+	{
+		return H; 
+	}
+	int GetC()
+	{
+		return 2*L*H+2*L*W+2*H*W;
+	}
+	int GetV()
+	{
+		return L*H*W;
+	}
+	//利用成员函数来判断
+	bool isSamebyclass(Cube &c2)
+	{
+	    if(L == c2.GetL() && H == c2.GetH() && W == c2.GetW() )
+   	    {
+       		 return true;		
+		}	
+	return false;	
+	} 
+private:
+    int L;
+	int W;
+	int H;	
+};
+int main()
+{
+	Cube c1;
+	c1.SetH(10);
+	c1.SetL(10);
+	c1.SetW(10);
+	Cube c2;
+	c2.SetH(10);
+	c2.SetL(10);
+	c2.SetW(10);
+	bool ret = c2.isSamebyclass(c2);  //前面有c2. 
+	if(ret)
+	{
+		cout << "相等" << endl;
+	}
+	else
+	{
+		cout << "不相等" << endl;
+	}
+}
